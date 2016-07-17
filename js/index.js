@@ -125,5 +125,11 @@ function initMap() {
 
 function animalIconHover(animal) {
   var a = animal.charAt(0).toUpperCase() + animal.substr(1);
-  document.getElementById('animal-stat').innerHTML = a + ': ' + animalTally[animal];
+  var stat = document.getElementById('animal-stat');
+  stat.style.display = 'block';
+  stat.innerHTML = a + ': ' + animalTally[animal];
+}
+
+function hideStatBar() {
+  document.getElementById('animal-stat').style.display = 'none';
 }
