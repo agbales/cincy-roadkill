@@ -1,6 +1,11 @@
 var animalTally = {};
+<<<<<<< HEAD
 function initMap() {
   var map;
+=======
+var map;
+function initMap() {
+>>>>>>> master
   var customMapType = new google.maps.StyledMapType([
       {
         stylers: [
@@ -35,7 +40,7 @@ function initMap() {
 
   map.mapTypes.set(customMapTypeId, customMapType);
   map.setMapTypeId(customMapTypeId);
-  
+
   $.getJSON("https://data.cincinnati-oh.gov/resource/wdw5-d4i2.json", function(json) {  
     $.each(json, function(key, data) {
 
