@@ -1,11 +1,7 @@
 var animalTally = {};
-<<<<<<< HEAD
-function initMap() {
-  var map;
-=======
 var map;
+
 function initMap() {
->>>>>>> master
   var customMapType = new google.maps.StyledMapType([
       {
         stylers: [
@@ -47,9 +43,10 @@ function initMap() {
       var latLng = new google.maps.LatLng(data.latitude, data.longitude);
 
       // Search description for common animals
-      var animal = data.description.toLowerCase().match(/deer|squirell|cat|kitty|dog|doggy|bird|duck|raccoon/g);
+      var animal = data.description.toLowerCase().match(/deer\s|squirell\s|cat\s|kitty\s|dog\s|doggy\s|bird\s|duck\s|raccoon\s/g);
       var ico = './icons/footprint-01.png';
-      
+
+      // Time
       var time = data.requested_datetime;
       var year = time.substr(0,4);
       var month = time.substr(5,2);
@@ -62,7 +59,7 @@ function initMap() {
       var hour = time.substr(12,4);
 
       if (animal !== null) {
-        switch(animal[0]) {
+        switch(animal[0].slice(0,-1)) {
           case "deer":
             animalTally.deer = animalTally.deer || 0;
             animalTally.deer++;
