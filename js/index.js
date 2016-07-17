@@ -1,6 +1,6 @@
 var animalTally = {};
+var map;
 function initMap() {
-  var map;
   var customMapType = new google.maps.StyledMapType([
       {
         stylers: [
