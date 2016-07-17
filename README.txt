@@ -1,3 +1,5 @@
-A Pen created at CodePen.io. You can find this one at http://codepen.io/agbales/pen/313d181968a778ee0f677963ef487ae4.
+# Cincy Roadkill
 
- 
+The city of Cincinnati published reports of roadkill in 2012. The records end on the 4th of July that yera.
+
+This project uses the SODA API & Google Maps to track those reports. The markers are custom, made in illustrator.
