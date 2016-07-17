@@ -10,17 +10,18 @@ html, body {
 }
 
 #animal-stat {
-	display: none;
-	position: absolute;
-	-webkit-transform: translate(0px, -60px);
-	transform: translate(0px, -60px);
+    position: absolute;
+    visibility: hidden;
+    -webkit-transform: translate(0px, -30px);
+    transform: translate(0px, -30px);
     background-color: #1a1a1a;
     width: 230px;
     padding-top: 13px;
     padding-left: 110px;
     padding-bottom: 60px;
-    opacity: .8;
     z-index: -9999;
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
 }
 
 #animals {

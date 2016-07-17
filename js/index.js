@@ -126,10 +126,16 @@ function initMap() {
 function animalIconHover(animal) {
   var a = animal.charAt(0).toUpperCase() + animal.substr(1);
   var stat = document.getElementById('animal-stat');
-  stat.style.display = 'block';
+  stat.style.visibility = 'visible';
+  stat.style.color = '#f5f5f5'
+  stat.style.transform = 'translate(0px, -60px)'
   stat.innerHTML = a + ': ' + animalTally[animal];
 }
 
 function hideStatBar() {
-  document.getElementById('animal-stat').style.display = 'none';
+  var stat = document.getElementById('animal-stat');
+  stat.style.visibility = 'hidden';
+  stat.style.transform = 'translate(0px, 0px)'
+  stat.style.color = '#1a1a1a'
+  stat.innerHTML = '';
 }
