@@ -1,7 +1,6 @@
-var map;
+var animalTally = {};
 function initMap() {
-  var animalTally = {};
-
+  var map;
   var customMapType = new google.maps.StyledMapType([
       {
         stylers: [
@@ -84,7 +83,7 @@ function initMap() {
           case "bird":
             animalTally.bird = animalTally.bird || 0;
             animalTally.bird++;
-            ico = './icons/bird.png';
+            ico = './icons/bird-01.png';
             break;
           case "duck":
             animalTally.duck = animalTally.duck || 0;
@@ -119,4 +118,11 @@ function initMap() {
 
     console.log(animalTally);
   });
+}
+
+function animalIconHover(animal) {
+  console.log(animal);
+  console.log(animalTally);
+  console.log(animalTally[animal]);
+  alert(animalTally[animal]);
 }
