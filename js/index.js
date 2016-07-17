@@ -1,5 +1,6 @@
 var map;
 function initMap() {
+  var animalTally = {};
 
   var customMapType = new google.maps.StyledMapType([
       {
@@ -42,7 +43,7 @@ function initMap() {
       var latLng = new google.maps.LatLng(data.latitude, data.longitude);
 
       // Search description for common animals
-      var animal = data.description.toLowerCase().match(/deer|squirell|cat|kitty|dog|doggy|bird|duck|bees|hive|raccoon/g);
+      var animal = data.description.toLowerCase().match(/deer|squirell|cat|kitty|dog|doggy|bird|duck|raccoon/g);
       var ico = './icons/footprint-01.png';
       
       var time = data.requested_datetime;
@@ -59,30 +60,40 @@ function initMap() {
       if (animal !== null) {
         switch(animal[0]) {
           case "deer":
+            animalTally.deer = animalTally.deer || 0;
+            animalTally.deer++;
             ico = './icons/deer-01.png';
             break;
           case "squirell":
+            animalTally.squirell = animalTally.squirell || 0;
+            animalTally.squirell++;
             ico = './icons/squirell-01.png';
             break;
           case "kitty":
           case "cat":
+            animalTally.cat = animalTally.cat || 0;
+            animalTally.cat++;
             ico = './icons/cat-01.png';
             break;
           case "dog":
           case "doggy":
+            animalTally.dog = animalTally.dog || 0;
+            animalTally.dog++;
             ico = './icons/dog-01.png';
             break;
           case "bird":
+            animalTally.bird = animalTally.bird || 0;
+            animalTally.bird++;
             ico = './icons/bird.png';
             break;
           case "duck":
+            animalTally.duck = animalTally.duck || 0;
+            animalTally.duck++;
             ico = './icons/duck-01.png';
             break;
-          case "bees":
-          case "hive":
-            ico = './icons/hive.png';
-            break;
           case "raccoon":
+            animalTally.raccoon = animalTally.raccoon || 0;
+            animalTally.raccoon++;
             ico = './icons/raccoon-01.png';
             break;
           default:
@@ -105,5 +116,7 @@ function initMap() {
       });
 
     });
+
+    console.log(animalTally);
   });
 }
