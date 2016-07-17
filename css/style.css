@@ -9,6 +9,20 @@ html, body {
 
 }
 
+#animal-stat {
+	/*display: none;*/
+	position: absolute;
+	-webkit-transform: translate(0px, -60px);
+	transform: translate(0px, -60px);
+    background-color: #1a1a1a;
+    width: 260px;
+    padding-top: 13px;
+    padding-left: 110px;
+    padding-bottom: 60px;
+    opacity: .8;
+    z-index: -9999;
+}
+
 #animals {
 	position: absolute;
 	top: 0;
