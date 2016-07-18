@@ -36,7 +36,7 @@ function initMap() {
   map.mapTypes.set(customMapTypeId, customMapType);
   map.setMapTypeId(customMapTypeId);
 
-  $.getJSON("https://data.cincinnati-oh.gov/resource/wdw5-d4i2.json", function(json) {  
+  $.getJSON("https://data.cincinnati-oh.gov/resource/wdw5-d4i2.json?$limit=10000", function(json) {  
     $.each(json, function(key, data) {
 
       var latLng = new google.maps.LatLng(data.latitude, data.longitude);
