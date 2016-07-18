@@ -42,7 +42,7 @@ function initMap() {
       var latLng = new google.maps.LatLng(data.latitude, data.longitude);
 
       // Search description for common animals
-      var animal = data.description.toLowerCase().match(/deer|squirell|cat|kitty|dog|doggy|bird|duck|raccoon/g);
+      var animal = data.description.toLowerCase().match(/deer\s|squirell\s|cat\s|kitty\s|dog\s|doggy\s|bird\s|duck\s|raccoon\s|possum\s|opossum\s|possume\s/g);
       var ico = './icons/footprint-01.png';
       
       var time = data.requested_datetime;
@@ -57,7 +57,7 @@ function initMap() {
       var hour = time.substr(12,4);
 
       if (animal !== null) {
-        switch(animal[0]) {
+        switch(animal[0].slice(0,-1)) {
           case "deer":
             animalTally.deer = animalTally.deer || 0;
             animalTally.deer++;
@@ -94,6 +94,13 @@ function initMap() {
             animalTally.raccoon = animalTally.raccoon || 0;
             animalTally.raccoon++;
             ico = './icons/raccoon-01.png';
+            break;
+          case "possum":
+          case "opossum":
+          case "possume":
+            animalTally.possum = animalTally.possum || 0;
+            animalTally.possum++;
+            ico = './icons/possum-01.png';
             break;
           default:
             animalTally.general = animalTally.general || 0;
