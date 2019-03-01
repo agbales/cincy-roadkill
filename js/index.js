@@ -36,13 +36,13 @@ function initMap() {
   map.mapTypes.set(customMapTypeId, customMapType);
   map.setMapTypeId(customMapTypeId);
 
-  $.getJSON("https://data.cincinnati-oh.gov/resource/wdw5-d4i2.json", function(json) {  
+  $.getJSON("https://data.cincinnati-oh.gov/resource/wdw5-d4i2.json?$limit=10000", function(json) {  
     $.each(json, function(key, data) {
 
       var latLng = new google.maps.LatLng(data.latitude, data.longitude);
 
       // Search description for common animals
-      var animal = data.description.toLowerCase().match(/deer|squirell|cat|kitty|dog|doggy|bird|duck|raccoon/g);
+      var animal = data.description.toLowerCase().match(/deer\s|squirell\s|cat\s|kitten\s|kitty\s|dog\s|doggy\s|puppy\s|bird\s|pigeon\s|pidgeon\s|duck\s|raccoon\s|possum\s|opossum\s|oppossum\s|possume\s/g);
       var ico = './icons/footprint-01.png';
       
       var time = data.requested_datetime;
@@ -57,7 +57,7 @@ function initMap() {
       var hour = time.substr(12,4);
 
       if (animal !== null) {
-        switch(animal[0]) {
+        switch(animal[0].slice(0,-1)) {
           case "deer":
             animalTally.deer = animalTally.deer || 0;
             animalTally.deer++;
@@ -68,19 +68,23 @@ function initMap() {
             animalTally.squirell++;
             ico = './icons/squirell-01.png';
             break;
-          case "kitty":
           case "cat":
+          case "kitten":
+          case "kitty":
             animalTally.cat = animalTally.cat || 0;
             animalTally.cat++;
             ico = './icons/cat-01.png';
             break;
           case "dog":
           case "doggy":
+          case "puppy":
             animalTally.dog = animalTally.dog || 0;
             animalTally.dog++;
             ico = './icons/dog-01.png';
             break;
           case "bird":
+          case "pigeon":
+          case "pidgeon":
             animalTally.bird = animalTally.bird || 0;
             animalTally.bird++;
             ico = './icons/bird-01.png';
@@ -94,6 +98,14 @@ function initMap() {
             animalTally.raccoon = animalTally.raccoon || 0;
             animalTally.raccoon++;
             ico = './icons/raccoon-01.png';
+            break;
+          case "possum":
+          case "opossum":
+          case "oppossum":
+          case "possume":
+            animalTally.possum = animalTally.possum || 0;
+            animalTally.possum++;
+            ico = './icons/possum-01.png';
             break;
           default:
             animalTally.general = animalTally.general || 0;
