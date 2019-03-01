@@ -37,15 +37,15 @@ function initMap() {
   map.mapTypes.set(customMapTypeId, customMapType);
   map.setMapTypeId(customMapTypeId);
 
-  $.getJSON("https://data.cincinnati-oh.gov/resource/wdw5-d4i2.json", function(json) {  
+  $.getJSON("https://data.cincinnati-oh.gov/resource/wdw5-d4i2.json?$limit=10000", function(json) {  
     $.each(json, function(key, data) {
 
       var latLng = new google.maps.LatLng(data.latitude, data.longitude);
 
       // Search description for common animals
-      var animal = data.description.toLowerCase().match(/deer\s|squirell\s|cat\s|kitty\s|dog\s|doggy\s|bird\s|duck\s|raccoon\s|possum\s|opossum\s|possume\s/g);
-
-      // Time
+      var animal = data.description.toLowerCase().match(/deer\s|squirell\s|cat\s|kitten\s|kitty\s|dog\s|doggy\s|puppy\s|bird\s|pigeon\s|pidgeon\s|duck\s|raccoon\s|possum\s|opossum\s|oppossum\s|possume\s/g);
+      var ico = './icons/footprint-01.png';
+      
       var time = data.requested_datetime;
       var year = time.substr(0,4);
       var month = time.substr(5,2);
@@ -72,19 +72,23 @@ function initMap() {
             animalTally.squirell++;
             ico = './icons/squirell-01.png';
             break;
-          case "kitty":
           case "cat":
+          case "kitten":
+          case "kitty":
             animalTally.cat = animalTally.cat || 0;
             animalTally.cat++;
             ico = './icons/cat-01.png';
             break;
           case "dog":
           case "doggy":
+          case "puppy":
             animalTally.dog = animalTally.dog || 0;
             animalTally.dog++;
             ico = './icons/dog-01.png';
             break;
           case "bird":
+          case "pigeon":
+          case "pidgeon":
             animalTally.bird = animalTally.bird || 0;
             animalTally.bird++;
             ico = './icons/bird-01.png';
@@ -101,6 +105,7 @@ function initMap() {
             break;
           case "possum":
           case "opossum":
+          case "oppossum":
           case "possume":
             animalTally.possum = animalTally.possum || 0;
             animalTally.possum++;
